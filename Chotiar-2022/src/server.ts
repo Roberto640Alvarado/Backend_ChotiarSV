@@ -2,15 +2,19 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
 import helmet from 'helmet';
+import mongoose from 'mongoose';
 
 import express, { NextFunction, Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import 'express-async-errors';
 
-import apiRouter from './routes/api';
+//import userRouter from './routes/api';
 import logger from 'jet-logger';
 import { CustomError } from '@shared/errors';
 
+
+//Import de Routes
+import userRouter from '@routes/user.routes';
 
 // Constants
 const app = express();
@@ -24,6 +28,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
+
+// Conectar a mongodb a traves de mongoose
+mongoose.connect(process.env.MONGO_URI as string)
+.then(() => {
+    logger.info('Conectado a base de datos')
+})
+.catch((err) => {
+    logger.err(err);
+});
 
 // Show routes called in console during development
 if (process.env.NODE_ENV === 'development') {
@@ -41,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
  **********************************************************************************/
 
 // Add api router
-app.use('/api', apiRouter);
+app.use('/api',userRouter);
 
 // Error handling
 app.use((err: Error | CustomError, _: Request, res: Response, __: NextFunction) => {
