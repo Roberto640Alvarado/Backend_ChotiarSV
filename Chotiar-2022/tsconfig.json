@@ -90,7 +90,7 @@
   "include": [
     "src/**/*.ts",
     "spec/**/*.ts"
-  ],
+, "src/middlewares/auth.js"  ],
   "exclude": [
     "src/public/"
   ]

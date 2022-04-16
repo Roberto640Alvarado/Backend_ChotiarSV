@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
 import User from "../models/user.model";
-import jwt, { JwtPayload } from 'jsonwebtoken'
-
 
 //Encriptar la contraseña y generar Token
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 
 const userController = {
     //Registramos un nuevo usuario
