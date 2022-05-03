@@ -21,12 +21,16 @@ const Post: Schema = new Schema({
         type: String,
         required: true
     },
-    comment: {
+    comment: [
+        {
         type: Schema.Types.ObjectId, ref: 'comment'
-    },
-    places: {
-        type: Schema.Types.ObjectId, ref: 'place'
-    }
+        }
+    ],
+    places: [
+        {
+            type: Schema.Types.ObjectId, ref: 'place'
+        }
+    ]
 });
 
 export default model('post',Post);

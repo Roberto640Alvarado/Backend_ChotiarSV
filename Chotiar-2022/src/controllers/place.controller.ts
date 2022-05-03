@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 import Place from "../models/place.model";
 
 const placeController = {
-    //Creamos un nuevo post
+    //Creamos un nuevo lugar
     create: async (req: Request, res: Response) => {
         try {
             console.log(req.body);
 
-            //nuevo post
+            //nuevo lugar
             const newPlace = new Place({ ...req.body });
 
             await newPlace
