@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
-const Opinion: Schema = new Schema({
+const Comment: Schema = new Schema({
     description: {
         type: String,
         required: true
@@ -10,4 +10,4 @@ const Opinion: Schema = new Schema({
     }
 });
 
-export default model('opinion',Opinion);
+export default model('comment',Comment);

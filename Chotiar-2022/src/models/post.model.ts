@@ -13,12 +13,19 @@ const Post: Schema = new Schema({
         type: String,
         required: true
     },
-    opinion: {
-        type: Schema.Types.ObjectId, ref: 'opinion'
-    },
     valueUser: {
         type: Number,
         default: 0
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    comment: {
+        type: Schema.Types.ObjectId, ref: 'comment'
+    },
+    places: {
+        type: Schema.Types.ObjectId, ref: 'place'
     }
 });
 

@@ -1,5 +1,4 @@
-import app from '@server';
-import { Router,Request,Response } from 'express';
+import { Router} from 'express';
 import postController from 'src/controllers/post.controller';
 
 const baseRouter = Router();
@@ -10,6 +9,7 @@ baseRouter.get('/getAll', postController.getAll);
 baseRouter.get('/getOne/:_id', postController.getOne);
 baseRouter.delete('/delete/:_id', postController.delete);
 baseRouter.get('/search/:title', postController.search);
+
 
 
 const postRouter = Router();
