@@ -98,6 +98,10 @@ const userController = {
         try {
             const user = await User.findOne({ username: req.params.username });
 
+            if (!user)
+                throw { status: 404, message: 'User not found' };
+            
+
             return res.status(200).json({ message: "Done", content: user });
 
         } catch (error: any) {

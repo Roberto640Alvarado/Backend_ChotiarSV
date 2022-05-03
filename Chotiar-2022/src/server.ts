@@ -16,6 +16,7 @@ import { CustomError } from '@shared/errors';
 //Import de Routes
 import userRouter from '@routes/user.routes';
 import postRouter from '@routes/post.routes';
+import placeRouter from '@routes/place.routes';
 
 // Constants
 const app = express();
@@ -57,6 +58,7 @@ if (process.env.NODE_ENV === 'production') {
 // Add api router
 app.use('/api',userRouter);
 app.use('/api',postRouter);
+app.use('/api',placeRouter);
 
 // Error handling
 app.use((err: Error | CustomError, _: Request, res: Response, __: NextFunction) => {
